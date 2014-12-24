@@ -1,5 +1,10 @@
 package com.example.noprom.utils;
 
+import com.example.noprom.bean.ChatMessage;
+import com.example.noprom.bean.Result;
+import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -7,9 +12,10 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
+import java.sql.Date;
 
 /**
- * Created by noprom .
+ * Created by noprom.
  */
 public class HttpUtils {
     // Api 地址
@@ -18,7 +24,34 @@ public class HttpUtils {
     private static final String API_KEY = "496841fc1875c6d23cdfddd93370aa64";
 
     /**
+     * 发送消息
+     *
+     * @param msg 要发送的消息
+     * @return 返回一个ChatMessage对象
+     */
+    public static ChatMessage sendMessage(String msg) {
+        ChatMessage chatMessage = new ChatMessage();
+        // 将返回的json数据转化
+        String jsonRes = doGet(msg);
+        Gson gson = new Gson();
+        Result result = null;
+        try {
+            result = gson.fromJson(jsonRes, Result.class);
+            chatMessage.setMsg(result.getText());
+        } catch (JsonSyntaxException e) {
+            e.printStackTrace();
+            chatMessage.setMsg("服务器繁忙，请稍后再试...");
+        }
+        // 设置chatMessage的时间和类型
+        chatMessage.setDate(new Date());
+        chatMessage.setType(ChatMessage.Type.INCOMING);
+        return chatMessage;
+
+    }
+
+    /**
      * 执行GET请求
+     *
      * @param msg 请求参数
      * @return GET请求返回的结果
      */
