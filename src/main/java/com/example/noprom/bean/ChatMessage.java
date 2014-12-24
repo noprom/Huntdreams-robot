@@ -1,6 +1,6 @@
 package com.example.noprom.bean;
 
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by noprom .

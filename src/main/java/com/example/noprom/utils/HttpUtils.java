@@ -12,7 +12,7 @@ import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URLEncoder;
-import java.sql.Date;
+import java.util.Date;
 
 /**
  * Created by noprom.
