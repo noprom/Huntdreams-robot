@@ -34,9 +34,9 @@ public class HttpUtils {
         // 将返回的json数据转化
         String jsonRes = doGet(msg);
         Gson gson = new Gson();
-        Result result = null;
-        try {
-            result = gson.fromJson(jsonRes, Result.class);
+                    Result result = null;
+            try {
+                result = gson.fromJson(jsonRes, Result.class);
             chatMessage.setMsg(result.getText());
         } catch (JsonSyntaxException e) {
             e.printStackTrace();
