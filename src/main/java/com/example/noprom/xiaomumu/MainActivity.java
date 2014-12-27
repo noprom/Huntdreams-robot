@@ -112,7 +112,7 @@ public class MainActivity extends Activity {
     private void initData() {
         // 准备数据源
         mDatas = new ArrayList<ChatMessage>();
-        mDatas.add(new ChatMessage("你好呀，小慕慕为您服务", ChatMessage.Type.INCOMING, new Date()));
+        mDatas.add(new ChatMessage("你好呀，猎梦为您服务", ChatMessage.Type.INCOMING, new Date()));
 //        mDatas.add(new ChatMessage("我是noprom，你好呀~", ChatMessage.Type.OUTCOMING, new Date()));
         // 设置适配器
         mAdapter = new ChatMessageAdapter(MainActivity.this, mDatas);
