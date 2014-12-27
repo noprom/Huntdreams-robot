@@ -37,7 +37,6 @@ public class MainActivity extends Activity {
     // 发送消息
     private Button mSendMsg;
 
-    // 在子线程里面使用handler刷新UI界面
     // 等待接收，子线程里面完成数据的返回
     private Handler mHandler = new Handler(){
         @Override
